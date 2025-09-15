@@ -34,7 +34,30 @@ const biblioteca = { ...bibliotecaData };
  * @return {boolean|string} - true si se realizó el préstamo, mensaje de error si no
  */
 function prestarLibro(idLibro, idEstudiante, fechaPrestamo) {
-  // Tu código aquí
+  const libro = biblioteca.libros.find(l => l.id === idLibro);
+  if (!libro) {
+    return "El libro no existe";
+  }
+  
+  if (!libro.disponible) {
+    return "El libro no está disponible";
+  }
+  
+  const estudiante = biblioteca.estudiantes.find(e => e.id === idEstudiante);
+  if (!estudiante) {
+    return "El estudiante no existe";
+  }
+  
+  libro.disponible = false;
+  libro.prestamos.push({
+    "estudiante": estudiante.nombre,
+    "fechaPrestamo": fechaPrestamo,
+    "fechaDevolucion": null
+  });
+  
+  estudiante.librosActuales.push(idLibro);
+  
+  return true;
 }
 
 
@@ -48,20 +71,34 @@ function prestarLibro(idLibro, idEstudiante, fechaPrestamo) {
  * @return {array} - Array con los libros que cumplen los criterios
  */
 function buscarLibros(criterios) {
-  // Tu código aquí
-  // Ejemplo de criterios: {titulo: "javascript", disponible: true}
+    return biblioteca.libros.filter(libro => {
+    for (let criterio in criterios) {
+      if (criterio === 'titulo') {
+        if (!libro.titulo.toLowerCase().includes(criterios.titulo.toLowerCase())) {
+          return false;
+        }
+      } else if (criterio === 'autor') {
+        if (!libro.autor.toLowerCase().includes(criterios.autor.toLowerCase())) {
+          return false;
+        }
+      } else if (libro[criterio] !== criterios[criterio]) {
+        return false;
+      }
+    }
+    return true;
+  });
 }
+
 
 
 // ALGUNOS CASOS DE PRUEBA
 // Descomentar para probar tu implementación
 
-/*
+
 console.log("Probando préstamo de libro:");
 console.log(prestarLibro(1, 3, "2025-09-13"));
 
 console.log("\nBuscando libros de programación disponibles:");
 console.log(buscarLibros({categoria: "Programación", disponible: true}));
 
-*/
 

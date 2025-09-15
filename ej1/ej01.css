@@ -1,6 +1,105 @@
 @font-face {
-  font-family: 'Rufina';
+  font-family: 'Rufina-Bold';
   src: url('./assets/fonts/Rufina-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Rufina-Regular';
+  src: url('./assets/fonts/Rufina-Regular.ttf') format('truetype')
+}
+
+#nombre {
+   margin-top: 100px;
+   margin-bottom: 100px;
+   margin-left: 50px;
+   margin-right: 50px;
+   color:rgb(211, 0, 0)
+}
+
+#titulo{
+   justify-content: flex-start;
+   font-size: 60px;
+   font-weight: bold;
+   font-family:Rufina-Bold;
+   text-align: left;
+}
+
+#subtitulo{
+   justify-content: flex-start;
+   font-size: 20px;
+   font-family:Rufina-Regular;
+   text-align: left;
+}
+
+#logo{
+  width: 100%;
+  max-width: 400px;
+
+
+}
+
+.cabecera{
+  background-color:rgb(255, 208, 0) ;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between
+;
+}
+
+.entradas{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.entradas-postre-texto{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: column;
+
+}
+
+.menu-titulos{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 55px;
+  font-family: Rufina-Bold;
+  margin-top: 50px;
+}
+
+.menu-subtitulos{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 12px;
+  margin-bottom: 50px;
+}
+
+.imagenes{
+  width: 100%;
+  max-width: 400px;
+  margin: 5px;
+}
+
+.titulos-platos{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:left;
+  font-size: 40px;
+  font-family: Rufina-Bold;
+  margin: 20px;
+}
+
+.subtitulos-platos{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:left;
+  font-size: 12px;
+  font-family: Rufina-Regular;
+  margin: 20px;
+}
+
